@@ -14,7 +14,7 @@ function App() {
   const Header = () => (
     <header>
       <h1>Gabriel Cespedes</h1>
-      <p>Artificial | Machine Learning | Cybersecurity</p>
+      <p>Artificial Intelligence| Machine Learning | Cybersecurity</p>
       <nav>
         <ul>
           <li><Link to="/">Home</Link></li>
@@ -44,7 +44,7 @@ function App() {
         <ul className="skills-list">
           <li><strong>Languages:</strong> Python, JavaScript, C++, Java</li>
           <li><strong>AI/ML:</strong> scikit-learn, PyTorch, TensorFlow, Keras, NumPy, pandas, Matplotlib</li>
-          <li><strong>Cybersecurity:</strong> Wireshark, Burp Suite, Metasploit, Kali Linux, Nessus, Nmap</li>
+          <li><strong>Cybersecurity:</strong> Wireshark, Metasploit, Kali Linux, Nmap</li>
           <li><strong>Web:</strong> HTML, CSS, React, Node.js, Flask</li>
           <li><strong>Databases:</strong> MySQL, MongoDB, SQLite</li>
           <li><strong>Tools:</strong> Git, GitHub, Jupyter Notebooks, VS Code, Postman, Docker (basics)</li>

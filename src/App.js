@@ -1,38 +1,21 @@
-import './App.css';
-import React from 'react';
-import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import Blog from './Blog';
 import Projects from './Projects';
 
-function App() {
-  const playGruntSound = () => {
-    const audio = document.getElementById("grunt-audio");
-    audio.currentTime = 0;
-    audio.play();
-  };
+const PageWrapper = ({ children }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -30 }}
+    transition={{ duration: 0.5, ease: 'easeInOut' }}
+  >
+    {children}
+  </motion.div>
+);
 
-  const Header = () => (
-    <header>
-      <h1>Gabriel Cespedes</h1>
-      <p>Artificial Intelligence| Machine Learning | Cybersecurity</p>
-      <nav>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/projects">Projects</Link></li>
-          <li><Link to="/blog">Blog</Link></li>
-          <li><a href="/#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
-  );
-
-  const Footer = () => (
-    <footer>
-      <p>&copy; 2025 Gabriel Cespedes</p>
-    </footer>
-  );
-
-  const Home = () => (
+const Home = () => (
+  <>
     <>
       <section id="about">
         <h2>About Me</h2>
@@ -47,8 +30,8 @@ function App() {
           <li><strong>Cybersecurity:</strong> Wireshark, Metasploit, Kali Linux, Nmap</li>
           <li><strong>Web:</strong> HTML, CSS, React, Node.js, Flask</li>
           <li><strong>Databases:</strong> MySQL, MongoDB, SQLite</li>
-          <li><strong>Tools:</strong> Git, GitHub, Jupyter Notebooks, VS Code, Postman, Docker (basics)</li>
-          <li><strong>Cloud:</strong> AWS (basic EC2/S3), Google Colab</li>
+          <li><strong>Tools:</strong> Git, GitHub, Jupyter Notebooks, VS Code</li>
+          <li><strong>Cloud:</strong> AWS, Google Colab</li>
         </ul>
       </section>
 
@@ -71,24 +54,63 @@ function App() {
         <p>Email: <a href="mailto:Gabe.Cespedes11@gmail.com">Gabe.Cespedes11@gmail.com</a></p>
       </section>
     </>
+  )
+  </>
+);
+
+function AnimatedRoutes() {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
+        <Route path="/projects" element={<PageWrapper><Projects /></PageWrapper>} />
+        <Route path="/blog" element={<PageWrapper><Blog /></PageWrapper>} />
+      </Routes>
+    </AnimatePresence>
+  );
+}
+
+function App() {
+  const playGruntSound = () => {
+    const audio = document.getElementById("grunt-audio");
+    audio.currentTime = 0;
+    audio.play();
+  };
+
+  const Header = () => (
+    <header>
+      <h1>Gabriel Cespedes</h1>
+      <p>Artificial Intelligence | Machine Learning | Cybersecurity</p>
+      <nav>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/projects">Projects</Link></li>
+          <li><Link to="/blog">Blog</Link></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+  );
+
+  const Footer = () => (
+    <footer>
+      <p>&copy; 2025 Gabriel Cespedes</p>
+    </footer>
   );
 
   return (
     <Router>
       <div className="App">
         <Header />
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/blog" element={<Blog />} />
-        </Routes>
-
-        <button id="grunt-button" onClick={playGruntSound}>🎉</button>
+        <AnimatedRoutes />
+        <button id="grunt-button" onClick={playGruntSound}>
+          <span role="img" aria-label="party popper">🎉</span>
+        </button>
         <audio id="grunt-audio">
           <source src={`${process.env.PUBLIC_URL}/grunt-birthday-party.mp3`} type="audio/mpeg" />
         </audio>
-
         <Footer />
       </div>
     </Router>

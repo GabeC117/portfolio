@@ -54,7 +54,6 @@ const Home = () => (
         <p>Email: <a href="mailto:Gabe.Cespedes11@gmail.com">Gabe.Cespedes11@gmail.com</a></p>
       </section>
     </>
-  )
   </>
 );
 

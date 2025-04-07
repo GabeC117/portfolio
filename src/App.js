@@ -2,6 +2,7 @@ import { HashRouter as Router, Routes, Route, Link, useLocation } from 'react-ro
 import { AnimatePresence, motion } from 'framer-motion';
 import Blog from './Blog';
 import Projects from './Projects';
+import './App.css';
 
 const PageWrapper = ({ children }) => (
   <motion.div
@@ -15,46 +16,84 @@ const PageWrapper = ({ children }) => (
 );
 
 const Home = () => (
-  <>
-    <>
-      <section id="about">
-        <h2>About Me</h2>
-        <p>Master's student at UT Austin by day. Tech enthusiast at night.</p>
-        <p>Started with Halo and a love for gaming, ended up in machine learning and AI research.</p>
-        <p>Now, I focus on developing intelligent systems and exploring how AI can drive innovation and improve everyday life.</p>
+  <section
+    style={{
+      background: 'linear-gradient(to right, #0f2027, #203a43, #2c5364)',
+      padding: '60px 20px',
+      color: 'white',
+      fontFamily: 'Poppins, sans-serif'
+    }}
+  >
+    <div style={{
+      background: 'rgba(255, 255, 255, 0.05)',
+      borderRadius: '12px',
+      padding: '24px',
+      marginBottom: '2rem',
+      boxShadow: '0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
+      backdropFilter: 'blur(10px)',
+      border: '1px solid rgba(255, 255, 255, 0.18)'
+    }}>
+      <h2 style={{ fontSize: '2rem' }}>About Me</h2>
+      <p>Master's student at UT Austin by day. Tech enthusiast at night.</p>
+      <p>Started with Halo and a love for gaming, ended up in machine learning and AI research.</p>
+      <p>Now, I focus on developing intelligent systems and exploring how AI can drive innovation and improve everyday life.</p>
+    </div>
 
-        <h2>Proficiencies</h2>
-        <ul className="skills-list">
-          <li><strong>Languages:</strong> Python, JavaScript, C++, Java</li>
-          <li><strong>AI/ML:</strong> scikit-learn, PyTorch, TensorFlow, Keras, NumPy, pandas, Matplotlib</li>
-          <li><strong>Cybersecurity:</strong> Wireshark, Metasploit, Kali Linux, Nmap</li>
-          <li><strong>Web:</strong> HTML, CSS, React, Node.js, Flask</li>
-          <li><strong>Databases:</strong> MySQL, MongoDB, SQLite</li>
-          <li><strong>Tools:</strong> Git, GitHub, Jupyter Notebooks, VS Code</li>
-          <li><strong>Cloud:</strong> AWS, Google Colab</li>
-        </ul>
-      </section>
+    <div style={{
+      background: 'rgba(255, 255, 255, 0.05)',
+      borderRadius: '12px',
+      padding: '24px',
+      marginBottom: '2rem',
+      boxShadow: '0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
+      backdropFilter: 'blur(10px)',
+      border: '1px solid rgba(255, 255, 255, 0.18)'
+    }}>
+      <h2 style={{ marginTop: '1rem' }}>Proficiencies</h2>
+      <ul className="skills-list">
+        <li><strong>Languages:</strong> Python, JavaScript, C++, Java</li>
+        <li><strong>AI/ML:</strong> scikit-learn, PyTorch, TensorFlow, Keras, NumPy, pandas, Matplotlib</li>
+        <li><strong>Cybersecurity:</strong> Wireshark, Metasploit, Kali Linux, Nmap</li>
+        <li><strong>Web:</strong> HTML, CSS, React, Node.js, Flask</li>
+        <li><strong>Databases:</strong> MySQL, MongoDB, SQLite</li>
+        <li><strong>Tools:</strong> Git, GitHub, Jupyter Notebooks, VS Code</li>
+        <li><strong>Cloud:</strong> AWS, Google Colab</li>
+      </ul>
+    </div>
 
-      <section id="projects-preview">
-        <h2>Hackathon Winner</h2>
-        <p>I'm excited to share that my team and I recently won a hackathon with an innovative "brainrot" twist to applying to internships. Click below to explore the details of this award-winning project!</p>
-        <Link to="/projects"><button>Learn More</button></Link>
-      </section>
+    <div style={{
+      background: 'rgba(255, 255, 255, 0.05)',
+      borderRadius: '12px',
+      padding: '24px',
+      marginTop: '3rem',
+      boxShadow: '0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
+      backdropFilter: 'blur(10px)',
+      border: '1px solid rgba(255, 255, 255, 0.18)'
+    }}>
+      <h2>Hackathon Winner</h2>
+      <p>I'm excited to share that my team and I recently won a hackathon with an innovative "brainrot" twist to applying to internships. Click below to explore the details of this award-winning project!</p>
+      <Link to="/projects"><button>Learn More</button></Link>
+    </div>
 
-      <section id="blog">
-        <h2>Check out the latest blog posts on AI below!</h2>
-        <div className="blog-container" id="blog-container">
-          {/* Blog articles will be dynamically loaded here */}
-        </div>
-        <Link to="/blog" className="btn">View More Articles</Link>
-      </section>
+    <div style={{
+      marginTop: '3rem',
+      padding: '24px',
+      borderRadius: '12px',
+      background: 'rgba(255, 255, 255, 0.05)',
+      backdropFilter: 'blur(10px)',
+      border: '1px solid rgba(255, 255, 255, 0.18)'
+    }}>
+      <h2>Check out the latest blog posts on AI below!</h2>
+      <div className="blog-container" id="blog-container">
+        {/* Blog articles will be dynamically loaded here */}
+      </div>
+      <Link to="/blog" className="btn">View More Articles</Link>
+    </div>
 
-      <section id="contact">
-        <h2>Contact Me</h2>
-        <p>Email: <a href="mailto:Gabe.Cespedes11@gmail.com">Gabe.Cespedes11@gmail.com</a></p>
-      </section>
-    </>
-  </>
+    <div style={{ marginTop: '3rem' }}>
+      <h2 id="contact">Contact Me</h2>
+      <p>Email: <a href="mailto:Gabe.Cespedes11@gmail.com">Gabe.Cespedes11@gmail.com</a></p>
+    </div>
+  </section>
 );
 
 function AnimatedRoutes() {

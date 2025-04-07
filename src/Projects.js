@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { motion } from 'framer-motion';
 
 const projects = [
   {
@@ -48,19 +49,45 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects">
-      <h2>Projects</h2>
-      <div className="projects-container">
+    <section id="projects" style={{
+      background: 'linear-gradient(to right, #0f2027, #203a43, #2c5364)',
+      padding: '60px 20px',
+      color: 'white',
+      fontFamily: 'Poppins, sans-serif'
+    }}>
+      <h2 style={{ fontSize: '2rem', marginBottom: '2rem' }}>Projects</h2>
+      <div className="projects-container" style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '2rem',
+        maxWidth: '900px',
+        margin: '0 auto'
+      }}>
         {projects.map((project, index) => (
-          <article className="project-item" key={index}>
-            <h3>{project.title}</h3>
+          <motion.div
+            className="project-item"
+            key={index}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0.3 }}
+            style={{
+              background: 'rgba(255, 255, 255, 0.05)',
+              borderRadius: '12px',
+              padding: '24px',
+              boxShadow: '0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(255, 255, 255, 0.18)'
+            }}
+          >
+            <h3 style={{ color: '#fff' }}>{project.title}</h3>
             <ul>
               {project.description.map((point, i) => <li key={i}>{point}</li>)}
             </ul>
             {project.tech && <p><strong>Technologies:</strong> {project.tech}</p>}
             {project.awards && <p><strong>Awards:</strong> {project.awards}</p>}
             {project.link && <a href={project.link} className="btn" target="_blank" rel="noopener noreferrer">Learn More</a>}
-          </article>
+          </motion.div>
         ))}
       </div>
     </section>

@@ -15,6 +15,26 @@ const PageWrapper = ({ children }) => (
   </motion.div>
 );
 
+const AnimatedBox = ({ children }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, ease: 'easeOut' }}
+    viewport={{ once: true }}
+    style={{
+      background: 'rgba(255, 255, 255, 0.05)',
+      borderRadius: '12px',
+      padding: '24px',
+      marginBottom: '2rem',
+      boxShadow: '0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
+      backdropFilter: 'blur(10px)',
+      border: '1px solid rgba(255, 255, 255, 0.18)'
+    }}
+  >
+    {children}
+  </motion.div>
+);
+
 const Home = () => (
   <section
     style={{
@@ -24,30 +44,14 @@ const Home = () => (
       fontFamily: 'Poppins, sans-serif'
     }}
   >
-    <div style={{
-      background: 'rgba(255, 255, 255, 0.05)',
-      borderRadius: '12px',
-      padding: '24px',
-      marginBottom: '2rem',
-      boxShadow: '0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
-      backdropFilter: 'blur(10px)',
-      border: '1px solid rgba(255, 255, 255, 0.18)'
-    }}>
+    <AnimatedBox>
       <h2 style={{ fontSize: '2rem' }}>About Me</h2>
       <p>Master's student at UT Austin by day. Tech enthusiast at night.</p>
       <p>Started with Halo and a love for gaming, ended up in machine learning and AI research.</p>
       <p>Now, I focus on developing intelligent systems and exploring how AI can drive innovation and improve everyday life.</p>
-    </div>
+    </AnimatedBox>
 
-    <div style={{
-      background: 'rgba(255, 255, 255, 0.05)',
-      borderRadius: '12px',
-      padding: '24px',
-      marginBottom: '2rem',
-      boxShadow: '0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
-      backdropFilter: 'blur(10px)',
-      border: '1px solid rgba(255, 255, 255, 0.18)'
-    }}>
+    <AnimatedBox>
       <h2 style={{ marginTop: '1rem' }}>Proficiencies</h2>
       <ul className="skills-list">
         <li><strong>Languages:</strong> Python, JavaScript, C++, Java</li>
@@ -58,36 +62,21 @@ const Home = () => (
         <li><strong>Tools:</strong> Git, GitHub, Jupyter Notebooks, VS Code</li>
         <li><strong>Cloud:</strong> AWS, Google Colab</li>
       </ul>
-    </div>
+    </AnimatedBox>
 
-    <div style={{
-      background: 'rgba(255, 255, 255, 0.05)',
-      borderRadius: '12px',
-      padding: '24px',
-      marginTop: '3rem',
-      boxShadow: '0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
-      backdropFilter: 'blur(10px)',
-      border: '1px solid rgba(255, 255, 255, 0.18)'
-    }}>
+    <AnimatedBox>
       <h2>Hackathon Winner</h2>
       <p>I'm excited to share that my team and I recently won a hackathon with an innovative "brainrot" twist to applying to internships. Click below to explore the details of this award-winning project!</p>
       <Link to="/projects"><button>Learn More</button></Link>
-    </div>
+    </AnimatedBox>
 
-    <div style={{
-      marginTop: '3rem',
-      padding: '24px',
-      borderRadius: '12px',
-      background: 'rgba(255, 255, 255, 0.05)',
-      backdropFilter: 'blur(10px)',
-      border: '1px solid rgba(255, 255, 255, 0.18)'
-    }}>
+    <AnimatedBox>
       <h2>Check out the latest blog posts on AI below!</h2>
       <div className="blog-container" id="blog-container">
         {/* Blog articles will be dynamically loaded here */}
       </div>
       <Link to="/blog" className="btn">View More Articles</Link>
-    </div>
+    </AnimatedBox>
 
     <div style={{ marginTop: '3rem' }}>
       <h2 id="contact">Contact Me</h2>

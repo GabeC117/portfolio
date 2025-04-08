@@ -60,7 +60,7 @@ const Projects = () => {
         display: 'flex',
         flexDirection: 'column',
         gap: '2rem',
-        maxWidth: '900px',
+        maxWidth: '800px',
         margin: '0 auto'
       }}>
         {projects.map((project, index) => (
@@ -69,18 +69,21 @@ const Projects = () => {
             key={index}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            whileHover={{ scale: 1.03 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
             viewport={{ once: true, amount: 0.3 }}
             style={{
               background: 'rgba(255, 255, 255, 0.05)',
               borderRadius: '12px',
-              padding: '24px',
-              boxShadow: '0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
+              padding: '16px 20px',
+              fontSize: '0.95rem',
+              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.2)',
               backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(255, 255, 255, 0.18)'
+              border: '1px solid rgba(255, 255, 255, 0.18)',
+              transition: 'transform 0.3s ease'
             }}
           >
-            <h3 style={{ color: '#fff' }}>{project.title}</h3>
+            <h3 style={{ color: '#fff', fontSize: '1.2rem' }}>{project.title}</h3>
             <ul>
               {project.description.map((point, i) => <li key={i}>{point}</li>)}
             </ul>

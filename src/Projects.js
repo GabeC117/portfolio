@@ -2,6 +2,10 @@ import React from 'react';
 import './App.css';
 import { motion } from 'framer-motion';
 
+const PRIMARY_COLOR = '#007AFF';
+const TEXT_COLOR = '#e0e0e0';
+const BACKGROUND_COLOR = '#121212';
+
 const projects = [
   {
     title: "Brainrot Jia SEED Hackathon Winner (2024)",
@@ -50,9 +54,9 @@ const projects = [
 const Projects = () => {
   return (
     <section id="projects" style={{
-      background: 'linear-gradient(to right, #0f2027, #203a43, #2c5364)',
+      background: BACKGROUND_COLOR,
       padding: '60px 20px',
-      color: 'white',
+      color: TEXT_COLOR,
       fontFamily: 'Poppins, sans-serif'
     }}>
       <h2 style={{ fontSize: '2rem', marginBottom: '2rem' }}>Projects</h2>
@@ -80,7 +84,8 @@ const Projects = () => {
               boxShadow: '0 8px 24px rgba(0, 0, 0, 0.2)',
               backdropFilter: 'blur(10px)',
               border: '1px solid rgba(255, 255, 255, 0.18)',
-              transition: 'transform 0.3s ease'
+              transition: 'transform 0.3s ease',
+              color: TEXT_COLOR
             }}
           >
             <h3 style={{ color: '#fff', fontSize: '1.2rem' }}>{project.title}</h3>
@@ -89,7 +94,7 @@ const Projects = () => {
             </ul>
             {project.tech && <p><strong>Technologies:</strong> {project.tech}</p>}
             {project.awards && <p><strong>Awards:</strong> {project.awards}</p>}
-            {project.link && <a href={project.link} className="btn" target="_blank" rel="noopener noreferrer">Learn More</a>}
+            {project.link && <a href={project.link} className="btn" target="_blank" rel="noopener noreferrer" style={{ backgroundColor: PRIMARY_COLOR, color: '#fff', padding: '8px 12px', borderRadius: '6px', display: 'inline-block', marginTop: '10px', textDecoration: 'none', fontWeight: 'bold' }}>Learn More</a>}
           </motion.div>
         ))}
       </div>

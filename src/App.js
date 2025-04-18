@@ -4,6 +4,11 @@ import Blog from './Blog';
 import Projects from './Projects';
 import './App.css';
 
+const PRIMARY_COLOR = '#007AFF';
+const TEXT_COLOR = '#e0e0e0';
+const BACKGROUND_COLOR = '#121212';
+const HEADER_FOOTER_COLOR = '#1f1f1f';
+
 const PageWrapper = ({ children }) => (
   <motion.div
     initial={{ opacity: 0, y: 30 }}
@@ -26,9 +31,10 @@ const AnimatedBox = ({ children }) => (
       borderRadius: '12px',
       padding: '24px',
       marginBottom: '2rem',
-      boxShadow: '0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
-      backdropFilter: 'blur(10px)',
-      border: '1px solid rgba(255, 255, 255, 0.18)'
+      boxShadow: '0 4px 30px rgba(0, 0, 0, 0.2)',
+      backdropFilter: 'blur(8px)',
+      border: '1px solid rgba(255, 255, 255, 0.1)',
+      color: TEXT_COLOR
     }}
   >
     {children}
@@ -38,9 +44,9 @@ const AnimatedBox = ({ children }) => (
 const Home = () => (
   <section
     style={{
-      background: 'linear-gradient(to right, #0f2027, #203a43, #2c5364)',
+      background: BACKGROUND_COLOR,
       padding: '60px 20px',
-      color: 'white',
+      color: TEXT_COLOR,
       fontFamily: 'Poppins, sans-serif'
     }}
   >
@@ -67,7 +73,7 @@ const Home = () => (
     <AnimatedBox>
       <h2>Hackathon Winner</h2>
       <p>I'm excited to share that my team and I recently won a hackathon with an innovative "brainrot" twist to applying to internships. Click below to explore the details of this award-winning project!</p>
-      <Link to="/projects"><button>Learn More</button></Link>
+      <Link to="/projects"><button style={{ padding: '8px 16px', borderRadius: '8px', backgroundColor: PRIMARY_COLOR, border: 'none', color: '#fff', fontWeight: 'bold' }}>Learn More</button></Link>
     </AnimatedBox>
 
     <AnimatedBox>
@@ -75,12 +81,14 @@ const Home = () => (
       <div className="blog-container" id="blog-container">
         {/* Blog articles will be dynamically loaded here */}
       </div>
-      <Link to="/blog" className="btn">View More Articles</Link>
+      <Link to="/blog">
+        <button style={{ padding: '8px 16px', borderRadius: '8px', backgroundColor: PRIMARY_COLOR, border: 'none', color: '#fff', fontWeight: 'bold' }}>View More Articles</button>
+      </Link>
     </AnimatedBox>
 
-    <div style={{ marginTop: '3rem' }}>
+    <div style={{ marginTop: '3rem', color: TEXT_COLOR }}>
       <h2 id="contact">Contact Me</h2>
-      <p>Email: <a href="mailto:Gabe.Cespedes11@gmail.com">Gabe.Cespedes11@gmail.com</a></p>
+      <p>Email: <a href="mailto:Gabe.Cespedes11@gmail.com" style={{ color: PRIMARY_COLOR }}>Gabe.Cespedes11@gmail.com</a></p>
     </div>
   </section>
 );
@@ -107,32 +115,32 @@ function App() {
   };
 
   const Header = () => (
-    <header>
-      <h1>Gabriel Cespedes</h1>
-      <p>Artificial Intelligence | Machine Learning | Cybersecurity</p>
+    <header style={{ backgroundColor: HEADER_FOOTER_COLOR, padding: '1rem', color: TEXT_COLOR, fontFamily: 'Poppins, sans-serif' }}>
+      <h1 style={{ margin: 0 }}>Gabriel Cespedes</h1>
+      <p style={{ margin: '0.5rem 0' }}>Artificial Intelligence | Machine Learning | Cybersecurity</p>
       <nav>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/projects">Projects</Link></li>
-          <li><Link to="/blog">Blog</Link></li>
-          <li><a href="/#contact">Contact</a></li>
+        <ul style={{ listStyle: 'none', padding: 0, display: 'flex', justifyContent: 'center', gap: '2rem' }}>
+          <li><Link style={{ color: PRIMARY_COLOR, textDecoration: 'none' }} to="/">Home</Link></li>
+          <li><Link style={{ color: PRIMARY_COLOR, textDecoration: 'none' }} to="/projects">Projects</Link></li>
+          <li><Link style={{ color: PRIMARY_COLOR, textDecoration: 'none' }} to="/blog">Blog</Link></li>
+          <li><a style={{ color: PRIMARY_COLOR, textDecoration: 'none' }} href="/#contact">Contact</a></li>
         </ul>
       </nav>
     </header>
   );
 
   const Footer = () => (
-    <footer>
+    <footer style={{ backgroundColor: HEADER_FOOTER_COLOR, color: TEXT_COLOR, padding: '1rem', textAlign: 'center' }}>
       <p>&copy; 2025 Gabriel Cespedes</p>
     </footer>
   );
 
   return (
     <Router>
-      <div className="App">
+      <div className="App" style={{ backgroundColor: BACKGROUND_COLOR, minHeight: '100vh' }}>
         <Header />
         <AnimatedRoutes />
-        <button id="grunt-button" onClick={playGruntSound}>
+        <button id="grunt-button" onClick={playGruntSound} style={{ position: 'fixed', bottom: '20px', right: '20px', backgroundColor: PRIMARY_COLOR, border: 'none', borderRadius: '50%', padding: '12px', fontSize: '1.5rem', cursor: 'pointer', color: '#fff' }}>
           <span role="img" aria-label="party popper">🎉</span>
         </button>
         <audio id="grunt-audio">
